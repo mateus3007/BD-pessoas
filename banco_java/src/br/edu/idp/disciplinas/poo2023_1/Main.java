@@ -29,15 +29,20 @@ public class Main {
         stmtC.executeUpdate(criacaoSql);
         stmtC.close();
 
-
-        String insert = "INSERT INTO pessoa (id, nome, qtdAcesso, naturalidade) VALUES (1,'Mateus',5,'bra');";
         Statement startInsert = conexao.createStatement();
+        String insert = "INSERT INTO pessoa (id, nome, qtdAcesso, naturalidade) VALUES (1,'Mateus',5,'Brasil');";
         startInsert.execute(insert);
+        String insert1 = "INSERT INTO pessoa (id, nome, qtdAcesso, naturalidade) VALUES (2,'lucas',10,'Portugal');";
+        startInsert.execute(insert1);
+        String insert2 = "INSERT INTO pessoa (id, nome, qtdAcesso, naturalidade) VALUES (3,'pedro',50,'Espanha');";
+        startInsert.execute(insert2);
+        String insert3 = "INSERT INTO pessoa (id, nome, qtdAcesso, naturalidade) VALUES (4,'joao',8,'Japao');";
+        startInsert.execute(insert3);
         startInsert.close();
 
 
-        String consulta = "select * from pessoa";
-        //consulta = "select nome as nome_completo, naturalidade from pessoa";
+
+        String consulta = "select nome, naturalidade, qtdAcesso from pessoa";
         Statement stmt = conexao.createStatement();
         ResultSet resultado = stmt.executeQuery(consulta);
 
@@ -51,10 +56,15 @@ public class Main {
             pessoa.setNome(nome);
             pessoa.setQuantidadeAcesso(quantidade);
             pessoa.setNaturalidade(naturalidade);
-            // print
-            // add list
+            System.out.print(nome + ",");
+            System.out.print(quantidade + ",");
+            System.out.println(naturalidade);
+
+
         }
-        
+
+
+
         System.out.println("\nTchau, até a próxima\n\n\t\t:-)");
     }
 
